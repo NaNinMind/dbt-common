@@ -127,9 +127,6 @@ def find_matching(
             # if ignore_spec.match(relative_dir):
             #     continue
             for local_file in local_files:
-                if not reobj.match(local_file):
-                    continue
-
                 absolute_path = os.path.join(current_path, local_file)
                 relative_path = os.path.relpath(absolute_path, absolute_path_to_search)
                 relative_path_to_root = os.path.join(relative_path_to_search, relative_path)
@@ -138,8 +135,6 @@ def find_matching(
                 if reobj.match(local_file) and (
                     not ignore_spec or not ignore_spec.match_file(relative_path_to_root)
                 ):
-
-                if not ignore_spec or not ignore_spec.match_file(relative_path_to_root):
                     matching.append(
                         {
                             "searched_path": relative_path_to_search,
